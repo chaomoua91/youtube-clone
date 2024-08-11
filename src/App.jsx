@@ -1,9 +1,12 @@
 import React from "react";
+import PageHeader from "./layouts/PageHeader";
 
 function App() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    <div className="max-h-screen flex flex-col">
+      <PageHeader />
+
+      <div>2</div>
     </div>
   );
 }
