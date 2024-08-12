@@ -33,6 +33,12 @@ function VideoGridItem({
           src={thumbnailUrl}
           className="block w-full object-cover rounded-xl"
         />
+        <div
+          className="absolute bottom-1 right-1 bg-secondary-dark text-secondary
+        text-sm px-0.5 rounded"
+        >
+          {duration}
+        </div>
       </a>
     </div>
   );
