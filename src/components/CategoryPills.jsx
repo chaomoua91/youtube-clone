@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "./Button";
 import PropTypes from "prop-types";
 import { useState } from "react";
@@ -12,11 +12,30 @@ function CategoryPills({ categories, selectedCategory, onSelect }) {
 
   const TRANSLATE_AMOUNT = 200;
 
+  useEffect(() => {
+    if (containerRef.current == null) return;
+
+    const observer = new ResizeObserver((entries) => {
+      const container = entries[0]?.target;
+      if (container == null) return;
+
+      setIsLeftVisible(translate > 0);
+      setIsRightVisible(
+        translate + container.clientWidth < container.scrollWidth
+      );
+    });
+
+    observer.observe(containerRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [categories, translate]);
+
   return (
     <>
-      <div className="overflow-x-hidden relative">
+      <div ref={containerRef} className="overflow-x-hidden relative">
         <div
-          ref={containerRef}
           className="flex whitespace-nowrap gap-3 
                     transition-transform w-[max-content]"
           style={{ transform: `translateX(-${translate}px)` }}
