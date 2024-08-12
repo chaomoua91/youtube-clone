@@ -1,6 +1,7 @@
 import React from "react";
 import PageHeader from "./layouts/PageHeader";
 import CategoryPills from "./components/CategoryPills";
+import { categories } from "./data/home";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       >
         <div>SideBar</div>
         <div className="sticky top-0 bg-white z-10 pb-4">
-          <CategoryPills />
+          <CategoryPills categories={categories} />
         </div>
       </div>
     </div>
