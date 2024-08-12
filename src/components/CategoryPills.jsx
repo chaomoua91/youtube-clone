@@ -4,6 +4,12 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+CategoryPills.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedCategory: PropTypes.string,
+  onSelect: PropTypes.func.isRequired,
+};
+
 function CategoryPills({ categories, selectedCategory, onSelect }) {
   const [isLeftVisible, setIsLeftVisible] = useState(false);
   const [isRightVisible, setIsRightVisible] = useState(false);
@@ -100,11 +106,5 @@ function CategoryPills({ categories, selectedCategory, onSelect }) {
     </>
   );
 }
-
-CategoryPills.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
-  selectedCategory: PropTypes.string,
-  onSelect: PropTypes.func.isRequired,
-};
 
 export default CategoryPills;

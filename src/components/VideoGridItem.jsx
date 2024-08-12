@@ -1,15 +1,16 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 VideoGridItem.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  channel: {
+  channel: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     profileUrl: PropTypes.string.isRequired,
-  },
+  }).isRequired,
   views: PropTypes.number.isRequired,
-  postedAt: PropTypes.date.isRequired,
+  postedAt: PropTypes.instanceOf(Date).isRequired,
   duration: PropTypes.number.isRequired,
   thumbnailUrl: PropTypes.string.isRequired,
   videoUrl: PropTypes.string.isRequired,
@@ -25,7 +26,16 @@ function VideoGridItem({
   thumbnailUrl,
   videoUrl,
 }) {
-  return <div></div>;
+  return (
+    <div className="flex flex-col gap-2">
+      <a href={`/watch?v=${id}`} className="relative aspect-video ">
+        <img
+          src={thumbnailUrl}
+          className="block w-full object-cover rounded-xl"
+        />
+      </a>
+    </div>
+  );
 }
 
 export default VideoGridItem;
