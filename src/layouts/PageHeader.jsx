@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Bell, Menu, Upload, User, Mic, Search } from "lucide-react";
+import { Bell, Menu, Upload, User, Mic, Search, ArrowLeft } from "lucide-react";
 import logo from "../assets/fakeyoutubelogo.png";
 import Button from "../components/Button";
 
@@ -24,6 +24,17 @@ function PageHeader() {
           showFullWidthSearch ? "flex" : "hidden"
         }`}
       >
+        {showFullWidthSearch && (
+          <Button
+            onClick={() => setShowFullWidth(false)}
+            type="button"
+            size="icon"
+            variant="ghost"
+            className="flex-shrink-0"
+          >
+            <ArrowLeft />
+          </Button>
+        )}
         <div className="flex flex-grow max-w-[600px]">
           <input
             type="search"
