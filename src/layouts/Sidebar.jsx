@@ -34,23 +34,27 @@ function Sidebar() {
         className="sticky top-0 overflow-y-auto scroll-hidden pb-4 
         flex flex-col ml-1 lg:hidden"
       >
-        <SmallSidebarItem Icon={Home} title="Home" url="/" />
-        <SmallSidebarItem Icon={Repeat} title="Shorts" url="/shorts" />
+        <SmallSidebarItem IconOrImgUrl={Home} title="Home" url="/" />
+        <SmallSidebarItem IconOrImgUrl={Repeat} title="Shorts" url="/shorts" />
         <SmallSidebarItem
-          Icon={Clapperboard}
+          IconOrImgUrl={Clapperboard}
           title="Subscriptions"
           url="/subscriptions"
         />
-        <SmallSidebarItem Icon={Library} title="Library" url="/library" />
+        <SmallSidebarItem
+          IconOrImgUrl={Library}
+          title="Library"
+          url="/library"
+        />
       </aside>
       <aside
         className="w-56 lg:sticky absolute top-0
         overflow-y-auto scroll-hidden pd-4 flex flex-col gap-2 px-2"
       >
         <LargeSidebarSection>
-          <LargeSidebarItem isActive Icon={Home} title="Home" url="/" />
+          <LargeSidebarItem isActive IconOrImgUrl={Home} title="Home" url="/" />
           <LargeSidebarItem
-            Icon={Clapperboard}
+            IconOrImgUrl={Clapperboard}
             title="Subscriptions"
             url="/subscriptions"
           />
@@ -210,13 +214,14 @@ function LargeSidebarSection({
 }
 
 LargeSidebarItem.propTypes = {
-  Icon: PropTypes.elementType.isRequired,
+  IconOrImgUrl: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string])
+    .isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   isActive: PropTypes.bool,
 };
 
-function LargeSidebarItem({ Icon, title, url, isActive = false }) {
+function LargeSidebarItem({ IconOrImgUrl, title, url, isActive = false }) {
   return (
     <a
       href={url}
@@ -228,7 +233,11 @@ function LargeSidebarItem({ Icon, title, url, isActive = false }) {
         }`
       )}
     >
-      <Icon className="w-6 h-6" />
+      {typeof IconOrImgUrl === "string" ? (
+        <img src={IconOrImgUrl} className="w-6 h-6 rounded-full" />
+      ) : (
+        <IconOrImgUrl className="w-6 h-6" />
+      )}
       <div className="whitespace-nowrap overflow-hidden text-ellipsis">
         {title}
       </div>
