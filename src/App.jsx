@@ -7,6 +7,7 @@ import VideoGridItem from "./components/VideoGridItem";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+
   return (
     <div className="max-h-screen flex flex-col">
       <PageHeader />
