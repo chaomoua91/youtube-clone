@@ -40,18 +40,14 @@ function Sidebar() {
           isLargeOpen ? "lg:hidden" : "lg:flex"
         }`}
       >
-        <SmallSidebarItem IconOrImgUrl={Home} title="Home" url="/" />
-        <SmallSidebarItem IconOrImgUrl={Repeat} title="Shorts" url="/shorts" />
+        <SmallSidebarItem Icon={Home} title="Home" url="/" />
+        <SmallSidebarItem Icon={Repeat} title="Shorts" url="/shorts" />
         <SmallSidebarItem
-          IconOrImgUrl={Clapperboard}
+          Icon={Clapperboard}
           title="Subscriptions"
           url="/subscriptions"
         />
-        <SmallSidebarItem
-          IconOrImgUrl={Library}
-          title="Library"
-          url="/library"
-        />
+        <SmallSidebarItem Icon={Library} title="Library" url="/library" />
       </aside>
       {isSmallOpen && (
         <div

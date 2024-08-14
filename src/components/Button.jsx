@@ -1,4 +1,3 @@
-import React from "react";
 import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
@@ -14,7 +13,7 @@ export const buttonStyles = cva(["transition-colors"], {
       ],
     },
     size: {
-      default: [" rounded", "p-2"],
+      default: ["rounded", "p-2"],
       icon: [
         "rounded-full",
         "w-10",
