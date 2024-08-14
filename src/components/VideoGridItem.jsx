@@ -22,7 +22,7 @@ const VIEW_FORMATTER = new Intl.NumberFormat(undefined, {
   notation: "compact",
 });
 
-function VideoGridItem({
+export function VideoGridItem({
   id,
   title,
   channel,
@@ -94,5 +94,3 @@ function VideoGridItem({
     </div>
   );
 }
-
-export default VideoGridItem;

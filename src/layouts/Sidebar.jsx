@@ -31,7 +31,7 @@ import { playlists, subscriptions } from "../data/sidebar";
 import { PageHeaderFirstSection } from "./PageHeader";
 import { useSidebarContext } from "../contexts/SidebarContext";
 
-function Sidebar() {
+export function Sidebar() {
   const { isLargeOpen, isSmallOpen, close } = useSidebarContext();
   return (
     <>
@@ -163,8 +163,6 @@ function Sidebar() {
     </>
   );
 }
-
-export default Sidebar;
 
 SmallSidebarItem.propTypes = {
   Icon: PropTypes.elementType.isRequired,
