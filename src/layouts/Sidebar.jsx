@@ -22,7 +22,7 @@ import {
   Podcast,
 } from "lucide-react";
 import React from "react";
-import { Children, ElementType, ReactNode, useState } from "react";
+import { Children, useState } from "react";
 import PropTypes from "prop-types";
 import { buttonStyles } from "../components/Button";
 import { twMerge } from "tailwind-merge";
