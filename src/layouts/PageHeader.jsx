@@ -1,32 +1,23 @@
-import React, { useState } from "react";
-import { Bell, Menu, Upload, User, Mic, Search, ArrowLeft } from "lucide-react";
-import logo from "../assets/fakeyoutubelogo.png";
-import Button from "../components/Button";
+import { ArrowLeft, Bell, Menu, Mic, Search, Upload, User } from "lucide-react";
+import logo from "../assets/Logo.png";
+import { Button } from "../components/Button";
+import { useState } from "react";
+import { useSidebarContext } from "../contexts/SidebarContext";
 
-function PageHeader() {
-  const [showFullWidthSearch, setShowFullWidth] = useState(false);
+export function PageHeader() {
+  const [showFullWidthSearch, setShowFullWidthSearch] = useState(false);
+
   return (
     <div className="flex gap-10 lg:gap-20 justify-between pt-2 mb-6 mx-4">
-      <div
-        className={`gap-4 items-center flex-shrink-0 ${
-          showFullWidthSearch ? "hidden" : "flex"
-        }`}
-      >
-        <Button>
-          <Menu />
-        </Button>
-        <a href="/">
-          <img src={logo} alt="fake youtube logo" />
-        </a>
-      </div>
+      <PageHeaderFirstSection hidden={showFullWidthSearch} />
       <form
-        className={`md:flex gap-4 flex-grow justify-center ${
-          showFullWidthSearch ? "flex" : "hidden"
+        className={`gap-4 flex-grow justify-center ${
+          showFullWidthSearch ? "flex" : "hidden md:flex"
         }`}
       >
         {showFullWidthSearch && (
           <Button
-            onClick={() => setShowFullWidth(false)}
+            onClick={() => setShowFullWidthSearch(false)}
             type="button"
             size="icon"
             variant="ghost"
@@ -39,9 +30,7 @@ function PageHeader() {
           <input
             type="search"
             placeholder="Search"
-            className="rounded-l-full border border-secondary-border 
-            shadow-inner shadow-secondary py-1 px-4 text-lg w-full
-            focus:board-blue-500 outline-none"
+            className="rounded-l-full border border-secondary-border shadow-inner shadow-secondary py-1 px-4 text-lg w-full focus:border-blue-500 outline-none"
           />
           <Button className="py-2 px-4 rounded-r-full border-secondary-border border border-l-0 flex-shrink-0">
             <Search />
@@ -52,12 +41,12 @@ function PageHeader() {
         </Button>
       </form>
       <div
-        className={`flex-shrink-0 md-gap-2 ${
+        className={`flex-shrink-0 md:gap-2 ${
           showFullWidthSearch ? "hidden" : "flex"
         }`}
       >
         <Button
-          onClick={() => setShowFullWidth(true)}
+          onClick={() => setShowFullWidthSearch(true)}
           size="icon"
           variant="ghost"
           className="md:hidden"
@@ -81,4 +70,21 @@ function PageHeader() {
   );
 }
 
-export default PageHeader;
+export function PageHeaderFirstSection({ hidden = false }) {
+  const { toggle } = useSidebarContext();
+
+  return (
+    <div
+      className={`gap-4 items-center flex-shrink-0 ${
+        hidden ? "hidden" : "flex"
+      }`}
+    >
+      <Button onClick={toggle} variant="ghost" size="icon">
+        <Menu />
+      </Button>
+      <a href="/">
+        <img src={logo} className="h-6" />
+      </a>
+    </div>
+  );
+}
