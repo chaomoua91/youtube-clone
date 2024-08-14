@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CategoryPills from "./components/CategoryPills";
+import { CategoryPills } from "./components/CategoryPills";
 import { categories, videos } from "./data/home";
 import { PageHeader } from "./layouts/PageHeader";
 import VideoGridItem from "./components/VideoGridItem";

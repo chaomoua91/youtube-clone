@@ -10,7 +10,7 @@ CategoryPills.propTypes = {
   onSelect: PropTypes.func.isRequired,
 };
 
-function CategoryPills({ categories, selectedCategory, onSelect }) {
+export function CategoryPills({ categories, selectedCategory, onSelect }) {
   const [isLeftVisible, setIsLeftVisible] = useState(false);
   const [isRightVisible, setIsRightVisible] = useState(false);
   const [translate, setTranslate] = useState(0);
@@ -106,5 +106,3 @@ function CategoryPills({ categories, selectedCategory, onSelect }) {
     </>
   );
 }
-
-export default CategoryPills;
